@@ -9,9 +9,6 @@ Github login
     Input text    xpath=.//input[@id='login_field']    ${ROSTER_USER}
     Input text    xpath=.//input[@id='password']    ${USER_PW}
     Click element    xpath=.//input[@type='submit']
-    Capture page screenshot
-    Sleep  5s
-    Capture page screenshot
     Switch window    MAIN
 
 Logout from roster
