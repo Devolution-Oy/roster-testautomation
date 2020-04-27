@@ -1,15 +1,13 @@
 *** Variables ***
-${ROSTER_USER}    devolution-roster-test
+${ROSTER_USER}    roster.test@devolution.fi
 
 *** Keywords ***
 Github login
-    Wait and click element    xpath=.//div[@id='btn_github']
-    Switch window    NEW
+    Go to    ${HOST_URL}test_login
     Wait until page contains element    xpath=.//input[@id='login_field']
     Input text    xpath=.//input[@id='login_field']    ${ROSTER_USER}
     Input text    xpath=.//input[@id='password']    ${USER_PW}
-    Click element    xpath=.//input[@type='submit']
-    Switch window    MAIN
+    Click element    xpath=.//button[@type='submit']
 
 Logout from roster
     Click element    xpath=.//button[@id='btn_logout']
