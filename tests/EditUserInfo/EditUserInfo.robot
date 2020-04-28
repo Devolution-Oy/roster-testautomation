@@ -13,6 +13,7 @@ ${ORIGINAL_EMAIL}     roster.test@devolution.fi
 
 *** Test Cases ***
 User can edit own user information
+    [Setup]   Open roster
     GIVEN User is logged in
     WHEN User edit own information    ${EDITED_USER_NAME}    ${EDITED_EMAIL}
     THEN New user info is saved into database
