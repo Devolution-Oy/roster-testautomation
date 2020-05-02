@@ -33,7 +33,7 @@ New user info is saved into database
     Page should contain element    xpath=.//button[@id='btn_edit_user']
 
 Save and confirm edit
-    Click element    xpath=.//button[@id='btn_save_user']
+    Click element    xpath=.//button[@id='btn_edit_user_submit']
     Wait and click element    xpath=.//button[@id='btn_confirm_edit']
 
 User is logged in
@@ -51,12 +51,12 @@ User edit own information
     [Documentation]    Assume that user page is shown
     [Arguments]   ${name}    ${email}
     SeleniumLibrary.Click element       xpath=.//button[@id='btn_edit_user']
-    Wait until page contains element    xpath=.//input[@id='edit_user_name']
-    Input text    xpath=.//input[@id='edit_user_name']     ${name}
-    Input text    xpath=.//input[@id='edit_user_email']    ${email}
-    Page should contain element    xpath=.//input[@id='edit_user_role' and @disabled]
-    Page should contain element    xpath=.//input[@id='edit_user_github' and @disabled]
-    Page should contain element    xpath=.//button[@id='btn_cancel_edit']
+    Wait until page contains element    xpath=.//form[@id='form_edit_user']
+    Input text    xpath=.//input[@id='input_edit_name']     ${name}
+    Input text    xpath=.//input[@id='input_edit_email']    ${email}
+    Page should contain element    xpath=.//select[@id='select_edit_role' and @disabled]
+    Page should contain element    xpath=.//input[@id='input_edit_github' and @disabled]
+    Page should contain element    xpath=.//button[@id='btn_edit_user_cancel']
     Save and confirm edit
 
 Revert user info
