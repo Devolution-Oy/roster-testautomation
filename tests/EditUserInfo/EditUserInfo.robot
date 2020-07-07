@@ -2,7 +2,6 @@
 Documentation    User info editing test cases
 Resource         ${PROJECT_ROOT}${/}resources${/}Setup.robot
 
-Suite Setup      Set selenium speed    0.5s
 Suite Teardown   Close All Browsers
 Force Tags       set-edit-user-info
 
@@ -69,14 +68,20 @@ User info are shown
     Page should contain element    xpath=.//label[@id='user_role']
     Page should contain element    xpath=.//button[@id='btn_edit_user']
 
-User edit own information but does not confirm dialog
+Edit user name and email
     [Arguments]   ${name}    ${email}
-    SeleniumLibrary.Click element       xpath=.//button[@id='btn_edit_user']
-    User edit dialog is shown
     Clear element text    xpath=.//input[@id='input_edit_name']
     Clear element text    xpath=.//input[@id='input_edit_email']
     Input text    xpath=.//input[@id='input_edit_name']     ${name}
     Input text    xpath=.//input[@id='input_edit_email']    ${email}
+    Page should contain element   xpath=.//input[@id='input_edit_name' and @value='${name}']
+    Page should contain element   xpath=.//input[@id='input_edit_email' and @value='${email}']
+
+User edit own information but does not confirm dialog
+    [Arguments]   ${name}    ${email}
+    SeleniumLibrary.Click element       xpath=.//button[@id='btn_edit_user']
+    User edit dialog is shown
+    Wait until keyword succeeds   5x    1s    Edit user name and email    ${name}    ${email}
     Click element    xpath=.//button[@class='btn_accept']
     Handle Alert     DISMISS
 
@@ -85,10 +90,7 @@ User edit own information
     [Arguments]   ${name}    ${email}
     SeleniumLibrary.Click element       xpath=.//button[@id='btn_edit_user']
     User edit dialog is shown
-    Clear element text    xpath=.//input[@id='input_edit_name']
-    Clear element text    xpath=.//input[@id='input_edit_email']
-    Input text    xpath=.//input[@id='input_edit_name']     ${name}
-    Input text    xpath=.//input[@id='input_edit_email']    ${email}
+    Wait until keyword succeeds   5x    1s    Edit user name and email    ${name}    ${email}
     Save and confirm edit
 
 Revert user info
