@@ -14,5 +14,5 @@ Github user can sign in
  
 *** Keywords ***
 User details are shown in user page
-    Wait until page contains    User page
+    Wait until page contains element    xpath=.//div[@id='user_page']
     Location should be     ${HOST_URL}user

@@ -8,7 +8,7 @@ Github login
     Input text    xpath=.//input[@id='login_field']    ${ROSTER_USER}
     Input text    xpath=.//input[@id='password']    ${USER_PW}
     Click element    xpath=.//button[@type='submit']
-    Wait until page contains    User page
+    Wait until page contains element    xpath=.//div[@id='user_page']
 
 Logout from roster
     Click element    xpath=.//button[@id='btn_logout']
